@@ -1,0 +1,1 @@
+query = "fetch cloud_run_revision | metric 'run.googleapis.com/container/cpu/utilizations' | align delta(1m) | every 1m | group_by [resource.service_name], [value.percentile(0.95)] | condition val() > 0.8"

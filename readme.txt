@@ -1,1 +1,1 @@
-query = "fetch cloud_run_revision | metric 'run.googleapis.com/container/cpu/utilizations' | align delta(1m) | every 1m | group_by [resource.service_name], [value.percentile(0.95)] | condition val() > 0.8"
+query = "fetch cloud_run_revision\n| metric 'run.googleapis.com/container/memory/utilizations'\n| align delta(5m)\n| every 5m\n| group_by [resource.service_name], [value_memory_utilization: mean(val())]\n| condition val() > 0.8"
